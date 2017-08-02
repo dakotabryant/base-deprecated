@@ -10,6 +10,12 @@ export const renderUser = (user) => ({
   user
 });
 
+export const RENDER_CHAT = 'RENDER_CHAT';
+export const renderChat = (message) => ({
+  type: RENDER_CHAT,
+  message
+});
+
 export const SIGN_UP = 'SIGN_UP';
 export const signUp = (user) => ({
   type: SIGN_UP,

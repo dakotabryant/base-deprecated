@@ -73,7 +73,7 @@ app.post('/api/lobbies', (req, res) => {
   })
   .then(result => {
       return res.status(201).json(result.apiRepr());
-      
+
     })
     .catch(err => {
       console.log(err);
@@ -89,7 +89,7 @@ app.get('/api/lobbies/:platform/:region/:game', (req, res) => {
   .then(result => {
     console.log(result)
       return res.json(result);
-      
+
     })
     .catch(err => {
       console.log(err);
@@ -223,7 +223,7 @@ function runServer(databaseUrl = DATABASE_URL, port = PORT) {
           console.log(room)
           socket.to(room).emit('create-group', data);
         });
-        
+
         socket.on('join-room', data => {
           // console.log('data', data);
           const { platform, game, region } = data.selection;
@@ -231,7 +231,7 @@ function runServer(databaseUrl = DATABASE_URL, port = PORT) {
           room.toLowerCase().replace(/\s+/g, '');
           console.log(room)
           socket.join(room);
-          
+
         });
 
         socket.on('sign-up', (user) => {
@@ -240,6 +240,13 @@ function runServer(databaseUrl = DATABASE_URL, port = PORT) {
             socket.join(room);
             socket.to(room).emit('sign-up', user);
         })
+
+        socket.on('chat-room', message => {
+          socket.emit('chat-room', message);
+          console.log(message);
+          // io.of('chat-room').emit('chat-room', message);
+        })
+
       });
     });
   });

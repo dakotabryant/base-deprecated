@@ -6,7 +6,6 @@ import * as Cookies from 'js-cookie';
 import CreateLobby from './createLobby';
 
 
-
 class SideBar extends Component {
   _userLogButton = () => {
     const accessToken = Cookies.get('accessToken');
@@ -19,15 +18,14 @@ class SideBar extends Component {
     }
   };
 
-
   render() {
 
     let signerUppers = this.props.signerUpInfo.map((user, index) => {
-      
+
       return (
         <div className= 'user-info'  key={index}>
           <h3>{user.user.name}</h3>
-         
+
         </div>
       )
     })

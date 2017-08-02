@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
-import {CREATE_GROUP, JOIN_LOBBIES_ROOM} from './actions/actions';
+import {CREATE_GROUP, JOIN_LOBBIES_ROOM, CHAT_ROOM} from './actions/actions';
 import {SIGN_UP} from './actions/lobby';
-import {renderGroup, renderUser} from './actions/lobby';
+import {renderGroup, renderUser, renderChat} from './actions/lobby';
 
 let socket;
 
@@ -12,6 +12,10 @@ export function socketConnect(store){
   });
   socket.on('sign-up', (user) => {
     store.dispatch(renderUser(user));
+  });
+  socket.on('chat-room', (message) => {
+    console.log('This is the middleware', message);
+    store.dispatch(renderChat(message));
   });
 }
 
@@ -32,6 +36,11 @@ export function socketMiddleware(store) {
     else if(socket && action.type === SIGN_UP) {
       socket.emit('sign-up', {
         user: action.user
+      });
+    }
+    else if(socket && action.type === CHAT_ROOM) {
+      socket.emit('chat-room', {
+      message: action.message
       });
     }
   };

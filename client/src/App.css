@@ -129,6 +129,13 @@
   .room button {
     margin-top: 0; }
 
+.chatRoom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+
 body {
   font-family: 'Montserrat', sans-serif;
   padding: 0;

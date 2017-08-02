@@ -7,13 +7,17 @@ export const createGroup = (selection) => ({
   selection
 });
 
+export const CHAT_ROOM = 'CHAT_ROOM';
+export const chatRoom = (message) => ({
+  type: CHAT_ROOM,
+  message
+});
+
 export const JOIN_LOBBIES_ROOM = 'JOIN_LOBBIES_ROOM';
 export const joinLobbiesRoom = (selection) => ({
   type: JOIN_LOBBIES_ROOM,
   selection
 });
-
-
 
 export const UPDATE_SLIDERS = ' UPDATE_SLIDERS';
 export const updateSliders = (value, sliderName) => ({
@@ -94,7 +98,7 @@ export const fetchUser = accessToken => dispatch => {
 
 export const updateUserProfile = (accessToken) => (dispatch, getState) => {
   const state = getState();
-  
+
   fetch(`/api/users/${state.currentUser.googleId.toString()}`, {
     method: 'PUT',
     headers: {
@@ -119,7 +123,7 @@ export const updateUserProfile = (accessToken) => (dispatch, getState) => {
 };
 
 export const saveLobbyInDatabase = (selections) => (dispatch) => {
-  
+
 
   fetch('/api/lobbies', {
     method: 'POST',

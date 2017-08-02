@@ -15,6 +15,7 @@ import Lobby from './components/Lobby/Lobby';
 import GameSelect from './components/Main/GameSelect';
 import PlatformSelect from './components/Main/PlatformSelect';
 import RegionSelect from './components/Main/RegionSelect';
+import ChatRoom from './components/ChatRoom/ChatRoom';
 
 
 
@@ -42,6 +43,7 @@ class App extends Component {
           <Route exact path="/games" component={GameSelect} />
           <Route exact path="/region" component={RegionSelect} />
           <Route exact path="/lobby" component={Lobby} />
+          <Route exact path="/chatroom" component={ChatRoom} />
         </div>
       </Router>
     );
