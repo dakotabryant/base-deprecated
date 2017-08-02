@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import LobbyModal from './Modal';
+import { connect } from 'react-redux';
 
-export default class Title extends Component {
-  constructor(props) {
-    super(props);
-  }
+class Title extends Component {
   showModal = () => {
       alert('Yolo');
   }
   render() {
-
-  return (
-    <div>
-   <a href="#"><h3 style={{ width: 400, marginLeft: 20 }}>Arthas Farm</h3></a>
-   </div>
-  );
+    return (
+      <div>
+        <h3>{this.props.title}</h3>
+    </div>
+    );
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    title: 'Arthas Farming'
+  };
+}
+
+export default connect(mapStateToProps)(Title);

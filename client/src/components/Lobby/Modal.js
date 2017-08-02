@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import Title from './Title';
-import Icon from './Icon';
+import { connect } from 'react-redux';
 
 const customStyles = {
   content : {
@@ -32,18 +31,28 @@ class LobbyModal extends React.Component {
   }
 
   afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
+    this.subtitle.style.color = '#000';
   }
 
   closeModal() {
     this.setState({modalIsOpen: false});
   }
 
+  kickMember() {
+    alert('Kick this member?')
+  }
+
+  showMembers() {
+    this.props.partyMembers.map(player => {
+      return <li onClick={this.kickMember.bind(this)} style={styles.fontStyles}>{player}</li>;
+    })
+  }
+
   render() {
+    const { title, description } = this.props;
     return (
       <div onClick={this.openModal}>
-        <button>Show status</button>
+        <button>View Group</button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -52,15 +61,21 @@ class LobbyModal extends React.Component {
           contentLabel="Example Modal"
         >
 
-          <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-          <button onClick={this.closeModal}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
+          <h2 ref={subtitle => this.subtitle = subtitle}>{title}</h2>
+          <form style={styles.buttonStyles}>
+          <div style={styles.fontStyles}>{description}</div>
+
+          <div style={styles.fontStyles} >Party Members: {this.props.partyNow}/{this.props.partyMax}</div>
+
+          <ul style={styles.partyStyle}>
+            {this.showMembers.bind(this)}
+            <li onClick={this.kickMember.bind(this)} style={styles.fontStyles}>{this.props.partyMembers[0]}</li>
+            <li style={styles.fontStyles}>{this.props.partyMembers[1]}</li>
+            <li style={styles.fontStyles}>{this.props.partyMembers[2]}</li>
+          </ul>
+
+          <button style={styles.buttonStyles} onClick={this.joinGroup}>Join Group</button>
+          <button style={styles.buttonStyles} onClick={this.closeModal}>To Lobby</button>
           </form>
         </Modal>
       </div>
@@ -68,4 +83,28 @@ class LobbyModal extends React.Component {
   }
 }
 
-export default LobbyModal;
+const styles = {
+  fontStyles: {
+    color: '#000',
+    marginTop: 10
+  },
+  buttonStyles: {
+    margin: 10,
+    padding: 10
+  },
+  partyStyle: {
+    listStyle: 'none'
+  }
+}
+
+const mapStateToProps = state => {
+  return{
+    title: 'Arthas Farm',
+    description: 'Looking for the necromancer drop.',
+    partyMembers: ['Colonial Spew', 'Scylol', 'Baamosk'],
+    partyNow: 3,
+    partyMax: 4
+  }
+}
+
+export default connect(mapStateToProps)(LobbyModal);

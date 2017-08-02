@@ -2,9 +2,7 @@ import {
   FETCH_USER_REQUEST,
   FETCH_USER_SUCCESS,
   FETCH_USER_ERROR,
-  UPDATE_SLIDERS
-} from '../actions/actions';
-import {
+  UPDATE_SLIDERS,
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE
@@ -32,8 +30,11 @@ const initialState = {
   error: null
 };
 
+
 export default function (state = initialState, action) {
+
   switch (action.type) {
+
     case FETCH_USER_REQUEST:
       return { ...state, loading: true, error: null };
     case FETCH_USER_ERROR:
@@ -64,6 +65,31 @@ export default function (state = initialState, action) {
       };
     case LOGOUT_FAILURE:
       return { ...state, loading: false, error: true };
+
+    case 'UPDATE_PLATFORM':
+      return {
+        ...state,
+        userSelections: {
+          ...state.userSelections,
+          platform: action.selection
+        }
+      };
+    case 'UPDATE_REGION':
+      return {
+        ...state,
+        userSelections: {
+          ...state.userSelections,
+          region: action.selection
+        }
+      };
+    case 'UPDATE_GAME':
+      return {
+        ...state,
+        userSelections: {
+          ...state.userSelections,
+          game: action.selection
+        }
+      };
     case UPDATE_SLIDERS:
       if (action.sliderName === 'slider1') {
         return { ...state, slider1: action.value };

@@ -1,0 +1,75 @@
+.user-selections {
+    margin: 10px;
+}
+
+.text-section {
+    padding-top: 25px;
+}
+
+.short-description {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-lobby-button {
+    margin-top: 15px;
+    width: 150px;
+    align-self: center;
+    margin-bottom: 25px;
+    background-color: #7289da;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+
+.create-lobby-button:hover {
+    cursor: pointer;
+}
+
+textarea {
+    margin-top: 5px;
+    resize: none;
+}
+
+.create-lobby-header {
+    display: flex;
+    justify-content: space-between
+}
+
+.close {
+    color:white;
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: -20px;
+    float: right;
+    
+}
+
+.close:hover,
+.close:focus {
+    color: #eb2b44;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-div {
+    display: flex;
+    justify-content: center;
+}
+
+ .modal {
+     padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: #151b27;
+} 
+

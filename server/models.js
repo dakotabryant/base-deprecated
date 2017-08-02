@@ -21,4 +21,19 @@ userSchema.methods.apiRepr = function() {
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = {User};
+//---------------------
+
+const lobbySchema = mongoose.Schema({
+  lobby: {type: {}}
+});
+
+lobbySchema.methods.apiRepr = function() {
+  return {
+    lobby: this.lobby
+  };
+};
+
+const Lobby = mongoose.model('Lobby', lobbySchema);
+
+
+module.exports = {User, Lobby};

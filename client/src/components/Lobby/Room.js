@@ -1,47 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Icon from './Icon';
-import Title from './Title';
-import Required from './Required';
-import Modal from './Modal';
+// import Icon from './Icon';
+// import Title from './Title';
+import Lobby from './Lobby';
+// import Required from './Required';
+
 
 class Room extends Component {
-  componentWillMount() {
-    console.log(this.props.game);
+  constructor(props) {
+    super(props);
+
   }
+
   render() {
-    console.log(this);
+    
     return (
-      <div className="room" style={styles.roomStyles}>
-              <Icon />
-              <Title />
-              <a href='#'><Modal /></a>
-            <Required icon={'Icon'} name={'Mic'}/>
-            <Required icon={'7 pm'} name={'Time'}/>
-            <Required icon={'English'} name={'Language'}/>
-            <Required icon={'4/7'} name={'Players'}/>
-            <button>Join</button>
+      <div className="lobby" >
+        <h3>{platform} - {region} - {game}</h3>
+          <Lobby />
       </div>
-    );
+    ); 
   }
+
 }
 
-const styles = {
-  roomStyles: {
-    display: 'flex',
-    flex: 1,
-    borderStyle: 'solid',
-    padding: 10,
-    margin: 10
-  }
-};
-
 const mapStateToProps = (state) => {
+  const { platform, region, game } = state.reducer.userSelections;
   return {
-    platform: state.platform,
-    region: state.region,
-    game: state.game
+    platform,
+    region,
+    game
   }
-};
+}
 
 export default connect(mapStateToProps)(Room);

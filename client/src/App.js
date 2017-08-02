@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import * as Cookies from 'js-cookie';
 import { connect } from 'react-redux';
 import { fetchUser } from './actions/actions';
-import Selection from './components/Main/Selection';
-import Games from './components/Main/Games';
 import ProfilePage from './components/ProfilePage/profilePage';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import LoginPage from './components/login-page';
+import LandingPage from './components/LandingPage';
 import SideBar from './components/SideBar';
+
+
+import CreateLobby from './components/createLobby';
+
 import Lobby from './components/Lobby/Lobby';
+
+import GameSelect from './components/Main/GameSelect';
+import PlatformSelect from './components/Main/PlatformSelect';
+import RegionSelect from './components/Main/RegionSelect';
+
+
 
 class App extends Component {
   componentDidMount() {
@@ -18,13 +26,21 @@ class App extends Component {
     }
   }
   render() {
+    // socket.on('user-joined', data => {
+    //   console.log(data);
+    // });
     return (
       <Router>
         <div className="app">
-          <Route exact path="/" component={LoginPage} />
-          <SideBar name={this.props.currentUser.name} profileImage={this.props.currentUser.photo} />
+          <SideBar
+            name={this.props.currentUser.name}
+            profileImage={this.props.currentUser.photo}
+          />
+          <Route exact path="/" component={LandingPage} />
           <Route exact path="/profile" component={ProfilePage} />
-          <Route exact path="/games" component={Games} />
+          <Route exact path="/platform" component={PlatformSelect} />
+          <Route exact path="/games" component={GameSelect} />
+          <Route exact path="/region" component={RegionSelect} />
           <Route exact path="/lobby" component={Lobby} />
         </div>
       </Router>
@@ -33,7 +49,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser
+  currentUser: state.reducer.currentUser
 });
 
 export default connect(mapStateToProps)(App);

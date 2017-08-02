@@ -36,8 +36,12 @@ $ff: 'ff-good-headline-web-pro-con'
 
 @import sidebar
 @import lobby
-@import profileIcon
+@import icon
 @import loginPage
+@import landingPage
+@import platformPage
+@import modal
+@import room
 
 
 //font import
@@ -74,3 +78,17 @@ body
     display: none !important
   #root
     width: 100%
+    padding-left: 275px
+  .logout, button
+    &:hover
+      transform: translate(-2px, -2px)
+  button
+    width: 150px
+    margin-top: 25px
+    background-color: #eb2b44
+    border: none
+    padding: 15px
+    border-radius: 5px
+    color: white
+    font-weight: bold
+    cursor: pointer

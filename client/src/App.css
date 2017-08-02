@@ -14,6 +14,8 @@
   left: 0;
   width: 275px;
   height: 100vh; }
+  .sidebar .main-text {
+    width: 100%; }
   .sidebar h1 {
     margin-left: 25px;
     margin-top: 25px;
@@ -30,7 +32,10 @@
     padding: 15px;
     border-radius: 5px;
     color: white;
-    font-weight: bold; }
+    font-weight: bold;
+    cursor: pointer; }
+  .sidebar .create-lobby {
+    background-color: #7289da; }
   .sidebar .profile-container {
     display: flex;
     align-items: center;
@@ -42,10 +47,16 @@
       margin-left: 25px; }
 
 .lobby {
-  flexDirection: column;
-  justifyContent: center;
-  alignItems: center;
-  margin-left: 25%; }
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 25px; }
+
+.profile-icon {
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+  margin-left: 20px; }
 
 .profile-icon {
   height: 50;
@@ -55,6 +66,68 @@
 
 .login {
   margin-left: 25%; }
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+  .landing-page h2 {
+    font-size: 56px;
+    margin: 0;
+    margin-bottom: 25px; }
+  .landing-page h3 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: lighter;
+    opacity: .5; }
+
+.select-platform {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .select-platform h2 {
+    font-size: 56px;
+    margin: 0;
+    margin-bottom: 25px; }
+  .select-platform .platforms-container {
+    display: flex;
+    width: 80%; }
+    .select-platform .platforms-container .platform {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 4px solid rgba(255, 255, 255, 0.7);
+      border-radius: 3px;
+      height: 300px;
+      width: 25%;
+      margin: 25px 25px;
+      cursor: pointer; }
+      .select-platform .platforms-container .platform:hover {
+        background-color: rgba(255, 255, 255, 0.2); }
+      .select-platform .platforms-container .platform p {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: auto; }
+      .select-platform .platforms-container .platform img {
+        width: 75px;
+        margin-top: 25px;
+        margin-bottom: auto; }
+
+.modal-div .dropdown-section option {
+  background-color: red !important; }
+
+.room {
+  display: 'flex';
+  flex: 1;
+  align-items: center;
+  justify-content: space-around; }
+  .room button {
+    margin-top: 0; }
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -81,4 +154,17 @@ body {
   body .hidden {
     display: none !important; }
   body #root {
-    width: 100%; }
+    width: 100%;
+    padding-left: 275px; }
+  body .logout:hover, body button:hover {
+    transform: translate(-2px, -2px); }
+  body button {
+    width: 150px;
+    margin-top: 25px;
+    background-color: #eb2b44;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer; }
