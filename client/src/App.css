@@ -15,7 +15,7 @@
   left: 0;
   width: 275px;
   height: 100vh;
-  z-index: 500; }
+  z-index: 50000; }
   .sidebar .main-text {
     width: 100%; }
   .sidebar h1 {
@@ -37,7 +37,8 @@
     font-weight: bold;
     cursor: pointer; }
   .sidebar .create-lobby {
-    background-color: #7289da; }
+    background-color: #7289da;
+    z-index: 500001; }
   .sidebar .profile-container {
     display: flex;
     align-items: center;
@@ -155,8 +156,13 @@
         margin-top: 25px;
         margin-bottom: auto; }
 
-.modal-div .dropdown-section option {
-  background-color: red !important; }
+.modal-div {
+  z-index: 5000000000; }
+  .modal-div .dropdown-section option {
+    background-color: red !important; }
+
+.modal {
+  z-index: 5000000; }
 
 .lobby-container {
   width: 100%;

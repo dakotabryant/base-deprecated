@@ -15,12 +15,6 @@ mongoose.Promise = global.Promise;
 
 const { DATABASE_URL, PORT } = process.env;
 const { User, Lobby } = require("./models");
-
-// console.log('********', DATABASE_URL);
-// console.log('-------->', PORT);
-// if(path.extname(filename) == '.js'){
-//       res.setHeader('content-type', 'application/javascript');
-//     }
 let secret = {
   CLIENT_ID: process.env.CLIENT_ID,
   CLIENT_SECRET: process.env.CLIENT_SECRET
@@ -224,7 +218,7 @@ function runServer(databaseUrl = DATABASE_URL, port = PORT) {
           const {
             platform,
             game,
-            region,
+            region, 
             voice,
             title,
             startTime,
