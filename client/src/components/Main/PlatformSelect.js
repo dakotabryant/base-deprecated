@@ -6,6 +6,7 @@ import Selector from './Selector';
 import platforms from '../../utils/platforms';
 
 class PlatformSelect extends Component {
+
   render() {
     const platformRender = platforms.map(platform => {
       return (
@@ -13,7 +14,7 @@ class PlatformSelect extends Component {
           key={platform.title}
           title={platform.title}
           image={platform.image}
-          onClick={p => this.props.dispatch(updatePlatformSelection(p.toLowerCase().replace(/\s+/g, '')))}
+          onClick={(p, e) => this.props.dispatch(updatePlatformSelection(p.toLowerCase().replace(/\s+/g, ''), e.target))}
         />
       );
     });

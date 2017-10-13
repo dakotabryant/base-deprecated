@@ -24,7 +24,7 @@ class GameSelect extends Component {
           key={game.title}
           title={game.title}
           image={game.image}
-          onClick={p => this.props.dispatch(updateGameSelection(p.toLowerCase().replace(/\s+/g, '')))}
+          onClick={(p, e) => this.props.dispatch(updateGameSelection(p.toLowerCase().replace(/\s+/g, ''), e.target))}
         />
       );
     });

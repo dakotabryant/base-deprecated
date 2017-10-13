@@ -55,18 +55,41 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 export const logoutFailure = () => ({
   type: LOGOUT_FAILURE
 });
-export const updateGameSelection = selection => ({
-  type: 'UPDATE_GAME',
-  selection
-})
-export const updateRegionSelection = selection => ({
-  type: 'UPDATE_REGION',
-  selection
-})
-export const updatePlatformSelection = selection => ({
-  type: 'UPDATE_PLATFORM',
-  selection
-})
+export const updateGameSelection = (selection, element) => dispatch => {
+  selectionToggle(element)
+  dispatch({
+    type: 'UPDATE_GAME',
+    selection
+  })
+}
+
+export const updateRegionSelection = (selection, element) => dispatch => {
+  selectionToggle(element)
+  dispatch({
+    type: 'UPDATE_REGION',
+    selection
+  })
+}
+
+export const updatePlatformSelection = (selection, element) => dispatch => {
+  selectionToggle(element)
+  dispatch({
+    type: 'UPDATE_PLATFORM',
+    selection
+  })
+}
+
+const selectionToggle = (element) => {
+  //Toggle selected class which highlights the chosen platform
+  const platforms = document.querySelectorAll('.platform')
+  platforms.forEach(platform => {
+    platform.classList.remove('selected')
+  })
+  const selectedElement = element.classList.contains('platform')
+    ? element
+    : element.parentNode
+  selectedElement.classList.add('selected')
+}
 
 export const fetchUser = accessToken => dispatch => {
   dispatch(fetchUserRequest());

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Selector = props => {
   return (
-    <div className="platform" onClick={() => props.onClick(props.title)}>
+    <div className="platform" onClick={(e) => props.onClick(props.title, e)}>
       <p>
         {props.title}
       </p>

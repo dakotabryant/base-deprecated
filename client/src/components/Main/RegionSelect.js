@@ -13,7 +13,7 @@ class RegionSelect extends Component {
           key={region.title}
           title={region.title}
           image={region.image}
-          onClick={p => this.props.dispatch(updateRegionSelection(p.toLowerCase().replace(/\s+/g, '')))}
+          onClick={(p, e) => this.props.dispatch(updateRegionSelection(p.toLowerCase().replace(/\s+/g, ''), e.target))}
         />
       );
     });
