@@ -6,6 +6,22 @@ import regions from '../../utils/regions'
 import Selector from './Selector'
 
 class RegionSelect extends Component {
+
+	constructor() {
+		super()
+		this._selected = this._selected.bind(this)
+	}
+
+	_selected(title) {
+		const regionTitle = title.toLowerCase().replace(/\s+/g, '')
+		const {stateRegionTitle, stateRegionToggle} = this.props
+		if (stateRegionTitle === regionTitle && stateRegionToggle) {
+			return 'selected'
+		} else {
+			return ''
+		}
+	}
+
 	render() {
 		const regionRender = regions.map(region => {
 			return (
@@ -13,6 +29,7 @@ class RegionSelect extends Component {
 					key={region.title}
 					title={region.title}
 					image={region.image}
+					selectedClass={this._selected(region.title)}
 					onClick={p => this.props.dispatch(updateRegionSelection(p.toLowerCase().replace(/\s+/g, '')))}
 				/>
 			)
@@ -23,14 +40,14 @@ class RegionSelect extends Component {
 				<div className="platforms-container">
 					{regionRender}
 				</div>
-        <div className="regionSelectButtonsContainer">
-          <Link to={'/platform'}>
-            <button>Back</button>
-          </Link>
-  				<Link to={'/games'}>
-  					<button>Next</button>
-  				</Link>
-        </div>
+				<div className="regionSelectButtonsContainer">
+					<Link to={'/platform'}>
+						<button>Back</button>
+					</Link>
+					<Link to={'/games'}>
+						<button>Next</button>
+					</Link>
+				</div>
 			</div>
 		)
 	}
@@ -38,7 +55,8 @@ class RegionSelect extends Component {
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		userSelections: state.userSelections
+		stateRegionTitle: state.findGroupReducers.userSelections.region.title,
+		stateRegionToggle: state.findGroupReducers.userSelections.region.toggle
 	}
 }
 

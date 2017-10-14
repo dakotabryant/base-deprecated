@@ -10,10 +10,21 @@ class GameSelect extends Component {
 	constructor() {
 		super()
 		this._clickHandler = this._clickHandler.bind(this)
+		this._selected = this._selected.bind(this)
 	}
 
 	_clickHandler() {
 		this.props.dispatch(joinLobbiesRoom(this.props.userSelections))
+	}
+
+	_selected(title) {
+		const gameTitle = title.toLowerCase().replace(/\s+/g, '')
+		const {stateGameTitle, stateGameToggle} = this.props
+		if (stateGameTitle === gameTitle && stateGameToggle) {
+			return 'selected'
+		} else {
+			return ''
+		}
 	}
 
 	render() {
@@ -34,9 +45,14 @@ class GameSelect extends Component {
 				<div className="platforms-container">
 					{gameRender}
 				</div>
-				<Link to={'/lobby'}>
-					<button onClick={this._clickHandler}>Find Lobby</button>
-				</Link>
+				<div className="regionSelectButtonsContainer">
+					<Link to={'/region'}>
+						<button>Back</button>
+					</Link>
+					<Link to={'/lobby'}>
+						<button onClick={this._clickHandler}>Find Lobby</button>
+					</Link>
+				</div>
 			</div>
 		)
 	}
@@ -44,6 +60,8 @@ class GameSelect extends Component {
 
 const mapStateToProps = (state, ownProps) => {
 	return {
+		stateGameTitle: state.findGroupReducers.userSelections.game.title,
+		stateGameToggle: state.findGroupReducers.userSelections.game.toggle,
 		userSelections: state.findGroupReducers.userSelections
 	}
 }

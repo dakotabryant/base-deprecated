@@ -20,14 +20,14 @@ export default function (state = initialState, action) {
 			userSelections: {
 				...state.userSelections,
 				platform: {title: action.selection, toggle: true}
-			},
+			}
 		}
 	case 'UPDATE_REGION':
 		return {
 			...state,
 			userSelections: {
 				...state.userSelections,
-				region: action.selection
+				region: {title: action.selection, toggle: true}
 			}
 		}
 	case 'UPDATE_GAME':
@@ -35,7 +35,7 @@ export default function (state = initialState, action) {
 			...state,
 			userSelections: {
 				...state.userSelections,
-				game: action.selection
+				game: {title: action.selection, toggle: true}
 			}
 		}
 	default:

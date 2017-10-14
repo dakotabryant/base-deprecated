@@ -7,6 +7,11 @@ import platforms from '../../utils/platforms'
 
 class PlatformSelect extends Component {
 
+	constructor() {
+		super()
+		this._selected = this._selected.bind(this)
+	}
+
 	_selected(title) {
 		const platformTitle = title.toLowerCase().replace(/\s+/g, '')
 		const {statePlatformTitle, statePlatformToggle} = this.props

@@ -72,7 +72,7 @@ export const getLobbiesError = error => ({
 export const getLobbiesFromDatabase = () => (dispatch, getState) => {
   dispatch(getLobbiesRequest());
   const state = getState();
-  let my = state.reducer.userSelections;
+  let my = state.findGroupReducers.userSelections;
   console.log(my);
   fetch(`/api/lobbies/${my.platform}/${my.region}/${my.game}`, {
     headers: {
