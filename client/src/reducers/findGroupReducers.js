@@ -19,7 +19,11 @@ export default function (state = initialState, action) {
 			...state,
 			userSelections: {
 				...state.userSelections,
-				platform: {title: action.selection, toggle: true}
+				platform: {
+					...state.userSelections.platform,
+					title: action.selection,
+					toggle: true
+				}
 			}
 		}
 	case 'UPDATE_REGION':
@@ -27,7 +31,11 @@ export default function (state = initialState, action) {
 			...state,
 			userSelections: {
 				...state.userSelections,
-				region: {title: action.selection, toggle: true}
+				region: {
+					...state.userSelections.region,
+					title: action.selection,
+					toggle: true
+				}
 			}
 		}
 	case 'UPDATE_GAME':
@@ -35,7 +43,33 @@ export default function (state = initialState, action) {
 			...state,
 			userSelections: {
 				...state.userSelections,
-				game: {title: action.selection, toggle: true}
+				game: {
+					...state.userSelections.game,
+					title: action.selection,
+					toggle: true
+				}
+			}
+		}
+	case 'CLEAR_SELECTIONS':
+		return {
+			...state,
+			userSelections: {
+				...state.userSelections,
+				platform: {
+					...state.userSelections.platform,
+					title: '',
+					toggle: false
+				},
+				region: {
+					...state.userSelections.region,
+					title: '',
+					toggle: false
+				},
+				game: {
+					...state.userSelections.game,
+					title: '',
+					toggle: false
+				}
 			}
 		}
 	default:
