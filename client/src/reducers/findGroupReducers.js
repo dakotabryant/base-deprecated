@@ -3,9 +3,9 @@ import {
 
 const initialState = {
 	userSelections: {
-		platform: '',
-		region: '',
-		game: ''
+		platform: {title: '', toggle: false},
+		region: {title: '', toggle: false},
+		game: {title: '', toggle: false}
 	},
 	loading: false,
 	error: null
@@ -19,9 +19,8 @@ export default function (state = initialState, action) {
 			...state,
 			userSelections: {
 				...state.userSelections,
-				platform: action.selection
+				platform: {title: action.selection, toggle: true}
 			},
-			currentUser: {...state.currentUser, name: state.currentUser.nameConstant}
 		}
 	case 'UPDATE_REGION':
 		return {

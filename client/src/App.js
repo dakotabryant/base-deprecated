@@ -12,9 +12,9 @@ import CreateLobby from './components/createLobby';
 
 import Lobby from './components/Lobby/Lobby';
 
-import GameSelect from './components/Main/GameSelect';
-import PlatformSelect from './components/Main/PlatformSelect';
-import RegionSelect from './components/Main/RegionSelect';
+import GameSelect from './components/findGroup/GameSelect';
+import PlatformSelect from './components/findGroup/PlatformSelect';
+import RegionSelect from './components/findGroup/RegionSelect';
 import ChatRoom from './components/ChatRoom/ChatRoom';
 
 
