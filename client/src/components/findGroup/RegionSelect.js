@@ -23,9 +23,14 @@ class RegionSelect extends Component {
 				<div className="platforms-container">
 					{regionRender}
 				</div>
+        <div className="regionSelectButtonsContainer">
+          <Link to={'/platform'}>
+            <button>Back</button>
+          </Link>
   				<Link to={'/games'}>
   					<button>Next</button>
   				</Link>
+        </div>
 			</div>
 		)
 	}
