@@ -58,14 +58,20 @@ export const logoutFailure = () => ({
 export const updateGameSelection = selection => ({
   type: 'UPDATE_GAME',
   selection
-})
+});
+
 export const updateRegionSelection = selection => ({
   type: 'UPDATE_REGION',
   selection
-})
+});
+
 export const updatePlatformSelection = selection => ({
   type: 'UPDATE_PLATFORM',
   selection
+});
+
+export const clearSelections = () => ({
+  type: 'CLEAR_SELECTIONS'
 })
 
 export const fetchUser = accessToken => dispatch => {
