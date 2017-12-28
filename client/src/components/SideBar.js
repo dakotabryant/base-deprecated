@@ -12,10 +12,8 @@ class SideBar extends Component {
   _userLogButton = () => {
     const accessToken = Cookies.get('accessToken');
     if (!this.props.currentUser.isLogged) {
-      console.log('fetch user');
       this.props.dispatch(fetchUser(accessToken));
     } else if (this.props.currentUser.isLogged) {
-      console.log('logout user');
       this.props.dispatch(logoutUser());
     }
   };

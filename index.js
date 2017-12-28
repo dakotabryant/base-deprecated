@@ -11,20 +11,21 @@ if (process.env.NODE_ENV === 'production') {
   // app.get('*', (req, res) => {
   //   res.sendFile(path.resolve(__dirname + 'client', 'build', 'index.html'));
   // });
-    // Just run the server
+  // Just run the server
 
   runServer(undefined, process.env.PORT || 8080);
-}
-else {
+} else {
   const app = express();
-    // Proxy everything through to Create React App
-  app.use(proxy('http://localhost:3000/', {
-    logLevel: 'warn', // Keep the logs clean
-    ws: true, // Proxy websockets too
-    router: {
-            // Anything to /api goes to our backend
-      'localhost:8080/api': 'http://localhost:3001'
-    }
-  }));
+  // Proxy everything through to Create React App
+  app.use(
+    proxy('http://localhost:3000/', {
+      logLevel: 'warn', // Keep the logs clean
+      ws: true, // Proxy websockets too
+      router: {
+        // Anything to /api goes to our backend
+        'localhost:8080/api': 'http://localhost:3001'
+      }
+    })
+  );
   app.listen(process.env.PORT || 8080);
 }
