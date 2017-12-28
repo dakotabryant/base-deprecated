@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { updateGameSelection, joinLobbiesRoom } from '../../actions/actions';
 import games from '../../utils/games';
 import Selector from './Selector';
+import Button from '../CommonComponents/Button';
 
 class GameSelect extends Component {
 	constructor() {
@@ -48,10 +49,10 @@ class GameSelect extends Component {
 				<div className="platforms-container">{gameRender}</div>
 				<div className="regionSelectButtonsContainer">
 					<Link to={'/region'}>
-						<button>Back</button>
+						<Button>Back</Button>
 					</Link>
 					<Link to={'/lobby'}>
-						<button onClick={this._clickHandler}>Find Lobby</button>
+						<Button onClick={this._clickHandler}>Find Lobby</Button>
 					</Link>
 				</div>
 			</div>

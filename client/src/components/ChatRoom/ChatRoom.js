@@ -20,11 +20,13 @@ class ChatRoom extends Component {
 			name: name,
 			room: room
 		};
+		console.log('the data is', data);
 		this.props.dispatch(userAccepted(data));
 		this.setState({ hideUser: [...this.state.hideUser, true] });
 	}
 
 	declinedHandler(socketId) {
+		console.log('hello');
 		this.props.dispatch(userDeclined(socketId));
 		this.setState({ hideUser: [...this.state.hideUser, true] });
 		this.setState({ showFeedback: true });

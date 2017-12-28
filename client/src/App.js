@@ -11,9 +11,9 @@ import CreateLobby from './components/createLobby';
 
 import Lobby from './components/Lobby/Lobby';
 
-import GameSelect from './components/findGroup/GameSelect';
-import PlatformSelect from './components/findGroup/PlatformSelect';
-import RegionSelect from './components/findGroup/RegionSelect';
+import GameSelect from './components/FindGroup/GameSelect';
+import PlatformSelect from './components/FindGroup/PlatformSelect';
+import RegionSelect from './components/FindGroup/RegionSelect';
 import ChatRoom from './components/ChatRoom/ChatRoom';
 
 class App extends Component {
