@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/.eslintrc.json
 
 # testing
 /coverage

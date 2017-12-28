@@ -7,51 +7,45 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import SideBar from './components/SideBar';
 
-
 import CreateLobby from './components/createLobby';
 
 import Lobby from './components/Lobby/Lobby';
 
-import GameSelect from './components/findGroup/GameSelect';
-import PlatformSelect from './components/findGroup/PlatformSelect';
-import RegionSelect from './components/findGroup/RegionSelect';
+import GameSelect from './components/FindGroup/GameSelect';
+import PlatformSelect from './components/FindGroup/PlatformSelect';
+import RegionSelect from './components/FindGroup/RegionSelect';
 import ChatRoom from './components/ChatRoom/ChatRoom';
 
-
-
 class App extends Component {
-  componentDidMount() {
-    const accessToken = Cookies.get('accessToken');
-    if (accessToken) {
-      this.props.dispatch(fetchUser(accessToken));
-    }
-  }
-  render() {
-    // socket.on('user-joined', data => {
-    //   console.log(data);
-    // });
-    return (
-      <Router>
-        <div className="app">
-          <SideBar
-            name={this.props.currentUser.name}
-            profileImage={this.props.currentUser.photo}
-          />
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/profile" component={ProfilePage} />
-          <Route exact path="/platform" component={PlatformSelect} />
-          <Route exact path="/games" component={GameSelect} />
-          <Route exact path="/region" component={RegionSelect} />
-          <Route exact path="/lobby" component={Lobby} />
-          <Route exact path="/chatroom" component={ChatRoom} />
-        </div>
-      </Router>
-    );
-  }
+	componentDidMount() {
+		const accessToken = Cookies.get('accessToken');
+		if (accessToken) {
+			this.props.dispatch(fetchUser(accessToken));
+		}
+	}
+	render() {
+		return (
+			<Router>
+				<div className="app">
+					<SideBar
+						name={this.props.currentUser.name}
+						profileImage={this.props.currentUser.photo}
+					/>
+					<Route exact path="/" component={LandingPage} />
+					<Route exact path="/profile" component={ProfilePage} />
+					<Route exact path="/platform" component={PlatformSelect} />
+					<Route exact path="/games" component={GameSelect} />
+					<Route exact path="/region" component={RegionSelect} />
+					<Route exact path="/lobby" component={Lobby} />
+					<Route exact path="/chatroom" component={ChatRoom} />
+				</div>
+			</Router>
+		);
+	}
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.reducer.currentUser
+	currentUser: state.reducer.currentUser
 });
 
 export default connect(mapStateToProps)(App);
