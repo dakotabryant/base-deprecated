@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchUser, logoutUser, joinLobbiesRoom } from '../actions/actions';
 import * as Cookies from 'js-cookie';
+import ProfileSidebar from './ProfilePage/ProfileSidebar';
 
 class SideBar extends Component {
 	_userLogButton = () => {
@@ -17,7 +18,7 @@ class SideBar extends Component {
 	};
 
 	render() {
-		const { isLogged } = this.props.currentUser;
+		const { currentUser: { isLogged }, profileImage, name } = this.props;
 		let buttonText = '';
 		let buttonPath = '';
 
@@ -36,11 +37,11 @@ class SideBar extends Component {
 						<h2>My Profile</h2>
 					</Link>
 				)}
-
-				<div className="profile-container">
-					<img src={this.props.profileImage} alt="" />
-					<p>{this.props.name}</p>
-				</div>
+				<ProfileSidebar
+					className="profile-container"
+					profileImage={profileImage}
+					name={name}
+				/>
 				<a href={buttonPath}>
 					<button className="logout" onClick={this._userLogButton}>
 						{buttonText}
